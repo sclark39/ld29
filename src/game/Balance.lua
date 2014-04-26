@@ -1,13 +1,13 @@
 Issues = 
 {
 	-- Question, Answers...
-	{ "?", "Cats", "Dogs" },
-	{ "?", "Go Out", "Stay In" },
-	{ "?", "Mario", "Sonic" },
-	{ "?", "Edward", "Jacob" },
-	{ "?", "Stick Shift", "Automatic" },
-	{ "?", "Ski", "Board" },
-	{ "?", "Geek", "Nerd" },
+	{ "Which are the best?", "Cats", "Dogs" },
+	{ "Who would win?", "Mario", "Sonic" },
+	{ "What team is best?", "Edward", "Jacob" },
+	{ "What should cars be?", "Stick Shift", "Automatic" },
+	{ "Who are ruining the slopes?", "Skiers", "Boarders" },
+	{ "Which is it better to be?", "Geek", "Nerd" },
+	{ "Which should be consulted?", "Dome Fossil", "Helix Fossil" },
 };
 
 Names = 
