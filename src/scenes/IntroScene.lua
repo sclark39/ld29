@@ -9,11 +9,15 @@ function IntroScene.OnLoad()
 	local press_start = Utility.NewSingleUseProp( "gfx/press_start.png", 303, 39 );		
 	
 	bg:setLoc( 0, 0 );
+	bg:setColor( 0, 0, 0, 0 );
 	press_start:setLoc( 0, -222 );
+	press_start:setColor( 0, 0, 0, 0 );
 
 	layer:insertProp( bg );
 	layer:insertProp( press_start );
 	
+	MOAICoroutine.blockOnAction( bg:seekColor( 1, 1, 1, 1, 0.25 ) )
+		
 	local curve = MOAIAnimCurve.new();
 	curve:reserveKeys( 3 );
 	curve:setKey ( 1, 0, 0 )
@@ -21,9 +25,6 @@ function IntroScene.OnLoad()
 	curve:setKey ( 3, 0.5, 0 )
 	curve:setWrapMode ( MOAIAnimCurve.WRAP )
 	
-
-	--press_start:setAttrLink ( MOAIProp2D.ATTR_Z_ROT, curve, MOAIAnimCurve.ATTR_VALUE )
-
 	anim = MOAIAnim.new();
 	anim:reserveLinks( 4 );
 	anim:setLink( 1, curve, press_start, MOAIProp2D.ATTR_R_COL );
