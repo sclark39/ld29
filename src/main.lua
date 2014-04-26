@@ -1,8 +1,14 @@
-print "Hello world."
+-- Engine Systems
+require "src.engine.Splashes"
+--require "src.engine.SceneManager"
 
-local screenw,screenh = 1024,800
+-- Scenes
+--require "src.scenes.IntroScene"
 
-MOAISim.openWindow( "Beneath The Surface", screenw, screenh )
+-- Initialize the window
+screenw,screenh = 1024,800
+
+MOAISim.openWindow( "Illuminati: Political Action Committee", screenw, screenh )
 
 local clearColor = MOAIColor.new()
 clearColor:setColor( 0,0,0, 1 )
@@ -16,39 +22,11 @@ layer = MOAILayer2D.new()
 layer:setViewport( viewport )
 MOAISim.pushRenderPass( layer )
 
-moaiSplashGfx = MOAIGfxQuad2D.new();
-moaiSplashGfx:setTexture( "gfx/splash_moai.png" )
-moaiSplashGfx:setRect( -screenw/2, -screenh/2, screenw/2, screenh/2 )
+function main()
+--	SceneManager.Swap( IntroScene );
+end
 
-ld29SplashGfx = MOAIGfxQuad2D.new();
-ld29SplashGfx:setTexture( "gfx/splash_ld29.png" )
-ld29SplashGfx:setRect( -screenw/2, -screenh/2, screenw/2, screenh/2 )
+-- Throw up the splashes first
+Splashes.RunBefore( main )
 
-moaiSplashProp = MOAIProp2D.new()
-moaiSplashProp:setDeck( moaiSplashGfx )
-moaiSplashProp:setLoc(0,0)
-moaiSplashProp:setColor( 0,0,0,0 )
-
-ld29SplashProp = MOAIProp2D.new()
-ld29SplashProp:setDeck( ld29SplashGfx )
-ld29SplashProp:setLoc( 0,0 )
-ld29SplashProp:setColor( 0,0,0,0 )
-
-layer:insertProp( moaiSplashProp )
-layer:insertProp( ld29SplashProp )
-
-local waittil = MOAICoroutine.blockOnAction;
-
-local fadeThread = MOAICoroutine.new()
-fadeThread:run( 
-	function()
-		waittil( moaiSplashProp:seekColor( 1, 1, 1, 1, 0.5 ) )
-		waittil( moaiSplashProp:seekColor( 1, 1, 1, 1, 1.5 ) )
-		waittil( moaiSplashProp:seekColor( 0, 0, 0, 0, 0.5 ) )
-		waittil( ld29SplashProp:seekColor(  1, 1, 1, 1, 0.5 ) )
-		waittil( ld29SplashProp:seekColor(  1, 1, 1, 1, 1.5 ) )
-		waittil( ld29SplashProp:seekColor( 0, 0, 0, 0, 0.5 ) )
-		
-	end
-);
 
