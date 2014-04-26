@@ -1,3 +1,4 @@
+require "src.game.Balance"
 require "src.engine.Utility"
 
 -- Engine Systems

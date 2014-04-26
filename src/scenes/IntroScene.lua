@@ -14,13 +14,14 @@ function IntroScene.OnLoad()
 	MOAICoroutine.blockOnAction( bg:seekColor( 1, 1, 1, 1, 0.25 ) )
 	
 	local font = MOAIFont.new ()
-	font:load ( "fnt/OLondon_.otf" )
+	--font:load ( "fnt/OLondon_.otf" )
+	font:load( "fnt/JackInput.TTF" )
 	local charcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-';
-	font:preloadGlyphs ( charcodes, 48 );
+	font:preloadGlyphs ( charcodes, 36 );
  
 	local style = MOAITextStyle.new ()
 	style:setFont ( font )
-	style:setSize ( 48 )
+	style:setSize ( 36 )
 	style:setColor ( 224/255, 199/255, 150/255, 1 )
 	
 	textbox = MOAITextBox.new();

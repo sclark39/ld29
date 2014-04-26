@@ -12,3 +12,15 @@ function Utility.NewSingleUseProp( file, w, h )
 	return prop;
 end
 	
+	
+
+function Utility.GetRandomNameAndSex()
+	local bMale = math.random(2) == 1;
+	local firstLkp = bMale and Names.Male or Names.Female;
+	
+	local name = firstLkp[math.random( #firstLkp )];
+	name = name .. " " .. string.char( math.random(26)+64 );
+	name = name .. " " .. Names.Surname[math.random( #Names.Surname )];
+	
+	return name, bMale;
+end
