@@ -8,43 +8,27 @@ Splashes =
 };
 
 
-function Splashes.RunBefore( func )
-	
-	local props = {};
-	
-	for _,file in ipairs(Splashes.files) do
-		local gfx, prop;
-			
-		gfx = MOAIGfxQuad2D.new();
-		gfx:setRect( -screenw/2, -screenh/2, screenw/2, screenh/2 );
-		gfx:setTexture( file );
+function Splashes.Run( func )
 
-		prop = MOAIProp2D.new();
-		prop:setDeck( gfx );
+	layer = MOAILayer2D.new()
+	layer:setViewport( viewport )
+	MOAISim.pushRenderPass( layer )
+
+	for _,file in ipairs(Splashes.files) do
+		
+		local prop = Utility.NewSingleUseProp( file, screenw, screenh );		
+		
 		prop:setLoc( 0,0 );
 		prop:setColor( 0,0,0,0 )
 		
 		layer:insertProp( prop );
+
+		MOAICoroutine.blockOnAction( prop:seekColor( 1, 1, 1, 1, 0.25 ) )
+		MOAICoroutine.blockOnAction( prop:seekColor( 1, 1, 1, 1, 1.5 ) )
+		MOAICoroutine.blockOnAction( prop:seekColor( 0, 0, 0, 0, 0.25 ) )
 		
-		props[#props + 1] = prop;		
+		layer:removeProp( prop );
 	end
-				
-	local thread = MOAICoroutine.new();
-	thread:run(
-		function()
-			
-			-- Run the splashes
-			for i,prop in ipairs(props) do				
-				MOAICoroutine.blockOnAction( prop:seekColor( 1, 1, 1, 1, 0.25 ) )
-				MOAICoroutine.blockOnAction( prop:seekColor( 1, 1, 1, 1, 1.5 ) )
-				MOAICoroutine.blockOnAction( prop:seekColor( 0, 0, 0, 0, 0.25 ) )
-				layer:removeProp( prop );
-			end
-			
-			-- Cleanup
-			props = nil;
-			
-			func()
-		end	
-	);
+	
+	MOAISim.clearRenderStack()
 end

@@ -1,9 +1,11 @@
+require "src.engine.Utility"
+
 -- Engine Systems
 require "src.engine.Splashes"
---require "src.engine.SceneManager"
+require "src.engine.SceneManager"
 
 -- Scenes
---require "src.scenes.IntroScene"
+require "src.scenes.IntroScene"
 
 -- Initialize the window
 screenw,screenh = 1024,800
@@ -18,15 +20,12 @@ viewport = MOAIViewport.new()
 viewport:setScale( screenw, screenh )
 viewport:setSize( screenw, screenh )
 
-layer = MOAILayer2D.new()
-layer:setViewport( viewport )
-MOAISim.pushRenderPass( layer )
 
-function main()
---	SceneManager.Swap( IntroScene );
-end
-
--- Throw up the splashes first
-Splashes.RunBefore( main )
-
-
+mainThread = MOAICoroutine.new();
+mainThread:run( 
+	function()
+		--Splashes.Run()
+		SceneManager.Init();
+		SceneManager.Swap( IntroScene );		
+	end
+);
