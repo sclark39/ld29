@@ -6,7 +6,15 @@ require "src.engine.Splashes"
 require "src.engine.SceneManager"
 
 -- Scenes
+require "src.scenes.TitleScene"
 require "src.scenes.IntroScene"
+require "src.scenes.GameScene"
+
+--[[
+MOAIDebugLines.setStyle ( MOAIDebugLines.TEXT_BOX, 1, 1, 1, 1, 1 )
+MOAIDebugLines.setStyle ( MOAIDebugLines.TEXT_BOX_LAYOUT, 1, 0, 0, 1, 1 )
+MOAIDebugLines.setStyle ( MOAIDebugLines.TEXT_BOX_BASELINES, 1, 1, 0, 0, 1 )
+--]]
 
 -- Initialize the window
 screenw,screenh = 1024,800
@@ -25,8 +33,8 @@ viewport:setSize( screenw, screenh )
 mainThread = MOAICoroutine.new();
 mainThread:run( 
 	function()
-		--Splashes.Run()
+		Splashes.Run()
 		SceneManager.Init();
-		SceneManager.Swap( IntroScene );		
+		SceneManager.Swap( TitleScene );		
 	end
 );

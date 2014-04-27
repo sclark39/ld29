@@ -37,3 +37,12 @@ Names =
 		"Mcbride", "Patterson", "Thomas", "White", "Mitchell", "Evans", "Ward",  
 	};
 };
+
+Strings = 
+{
+	IntroText = 
+		"You are the Political Action Committe for the Illuminati. You operate beneath the surface of the political and social landscapes of "..
+		"society. It is your responsibility to deterimine and control the direction for all the world's most pressing issues. The first rule "..
+		"of the Illuminati is: you do not talk about The Illuminati. So, stay smart; and don't get caught.";
+};
+
