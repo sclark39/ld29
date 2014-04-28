@@ -3,9 +3,7 @@ GameScene = {};
 function GameScene.OnLoad()
 	local layer = MOAILayer2D.new()
 	layer:setViewport( viewport )
-	MOAISim.pushRenderPass( layer )
-	
-
+	MOAISim.pushRenderPass( layer )	
 end
 
 function GameScene.OnUnload()
